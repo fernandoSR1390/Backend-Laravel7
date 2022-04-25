@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use App\Http\Requests\Validation;
 
 class ProductoController extends Controller
 {
@@ -36,7 +37,7 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Validation $request)
     {
         $producto = new Producto();
         $producto->descripcion = $request->descripcion;
@@ -73,7 +74,7 @@ class ProductoController extends Controller
      * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Validation $request)
     {
         $producto = Producto::findOrFail($request->id);
         $producto->descripcion = $request->descripcion;
